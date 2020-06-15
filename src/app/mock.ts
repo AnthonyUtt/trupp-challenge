@@ -1,3 +1,36 @@
+// I added a type declaration because the red squiggly was bothering me...
+
+type EmployeeDetails = {
+  contactName: string;
+  dateOfBirth: Date;
+  maskedSocialSecurity: string;
+  employmentStatus: 'Part-Time' | 'Full-Time';
+  hireDate: Date;
+  streetAddress: {
+    addressLine1: string;
+    addressLine2: string | null;
+    city: string;
+    state: string;
+    zip: string;
+  };
+  mailingAddress: {
+    addressLine1: string | null;
+    addressLine2: string | null;
+    city: string | null;
+    state: string | null;
+    zip: string | null;
+  };
+  personalEmail: string;
+  workEmail: string;
+  mobilePhone: string;
+  workPhone: string;
+  genderDescription: 'Male' | 'Female';
+  medicareEligible: boolean | null;
+  smoker: boolean | null;
+  disabled: boolean | null;
+  student: boolean | null;
+}
+
 export const EMPLOYEEDETAILS_MOCK: EmployeeDetails = {
   contactName: 'Carrie Conway',
   dateOfBirth: new Date('February 7, 1990'),

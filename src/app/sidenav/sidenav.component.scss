@@ -8,15 +8,17 @@
 
         width: 100;
         margin: auto;
-        padding: auto;
+        padding: 20px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
 
         p {
-            line-height: 24px;
-            padding: 4px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            line-height: 16px;
             margin: 0;
         }
     }
@@ -75,8 +77,4 @@
             }
         }
     }
-}
-
-img {
-    border-radius: 50%;
 }
