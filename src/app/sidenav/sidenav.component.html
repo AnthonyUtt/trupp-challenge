@@ -1,0 +1,50 @@
+<div class="dropdown">
+    <button mat-button [matMenuTriggerFor]="menu">
+        <p>Employee Portal</p>
+        <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Fake Link 1</button>
+        <button mat-menu-item>Fake Link 2</button>
+        <button mat-menu-item>Employee Portal</button>
+    </mat-menu>
+</div>
+<div class="content">
+    <div class="top-section">
+        <img alt="Profile Photo" src="assets/thumbnail.png" height="100" width="100" />
+        <h3>Carrie Conway</h3>
+        <p>Northwest National Bank</p>
+    </div>
+    <div class="nav">
+        <ul>
+            <li>
+                <mat-icon>dashboard</mat-icon>
+                <a>Dashboard</a>
+            </li>
+            <li id="active">
+                <mat-icon>account_circle</mat-icon>
+                <a>Profile</a>
+            </li>
+            <li>
+                <mat-icon>assignment</mat-icon>
+                <a>Open Enrollment</a>
+            </li>
+            <li>
+                <mat-icon>star</mat-icon>
+                <a>My Benefits</a>
+            </li>
+            <li>
+                <mat-icon>help</mat-icon>
+                <a>Help & Feedback</a>
+            </li>
+            <li>
+                <mat-icon>settings</mat-icon>
+                <a>Account Settings</a>
+            </li>
+            <li>
+                <mat-icon>exit_to_app</mat-icon>
+                <a>Logout</a>
+            </li>
+        </ul>
+    </div>
+</div>

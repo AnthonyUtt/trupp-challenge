@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'trupp-challenge';
+  title = 'Trupp Challenge | Submission by Anthony Utt';
 }

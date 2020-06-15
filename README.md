@@ -1,6 +1,10 @@
-# TruppChallenge
+# trupp-challenge
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.8.
+
+## About
+
+This project was created as part of the interview process for Trupp HR. Post generation, all code was written and edited by [AnthonyUtt](https://github.com/AnthonyUtt).
 
 ## Development server
 
