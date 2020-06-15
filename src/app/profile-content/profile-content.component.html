@@ -12,11 +12,32 @@
                         <h2>Basic Info</h2>
                         <div class="section-item">
                             <p>Full Name</p>
-                            <p>data goes here</p>
+                            <p>{{ details.fullName }}</p>
+                        </div>
+                        <div class="section-item">
+                            <p>Preferred First Name</p>
+                            <p>{{ details.preferredFirstName }}</p>
+                        </div>
+                        <div class="section-item">
+                            <p>Social Security Number</p>
+                            <p>{{ printSocial() }}</p>
+                        </div>
+                        <div class="section-item">
+                            <p>Birthday</p>
+                            <p>{{ printBirthday() }}</p>
                         </div>
                     </div>
                     <div class="section">
                         <!-- Addresses -->
+                        <h2>Addresses</h2>
+                        <div class="section-item" *ngFor="let address of details.addresses">
+                            <p>{{ address.type }}</p>
+                            <p *ngIf="address.addressLine1">
+                                {{ address.addressLine1 }}
+                                {{ address.addressLine2 }}
+                                {{ address.city }}, {{ address.state }} {{ address.zip }}
+                            </p>
+                        </div>
                     </div>
                     <div class="section">
                         <!-- Contact Info -->
@@ -24,6 +45,7 @@
                     <div class="section">
                         <!-- Legal Info -->
                     </div>
+                    <button class="edit-button" mat-raised-button (click)="openDialog()"><mat-icon>edit</mat-icon></button>
                 </mat-card>
             </mat-tab>
             <mat-tab label="MY FAMILY">

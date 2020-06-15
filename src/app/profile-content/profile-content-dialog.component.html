@@ -1,0 +1,141 @@
+<h1 mat-dialog-title>{{ data.fullName }}</h1>
+<mat-dialog-content class="content">
+    <div class="section">
+        <!-- Basic Info -->
+        <h2>Basic Info</h2>
+        <div class="form-item">
+            <mat-icon>person</mat-icon>
+            <div class="group">
+                <mat-form-field>
+                    <mat-label>Full Name</mat-label>
+                    <input matInput [value]="data.fullName" (input)="data.fullName=$event.target.value">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Preferred First Name</mat-label>
+                    <input matInput [value]="data.preferredFirstName" (input)="data.preferredFirstName=$event.target.value">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-item">
+            <mat-icon>credit_card</mat-icon>
+            <mat-form-field>
+                <mat-label>Social Security Number</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [value]="data.maskedSocialSecurity" (input)="data.maskedSocialSecurity=$event.target.value">
+                <mat-icon matSuffix (click)="hide = !hide">{{!hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="form-item">
+            <mat-icon>cake</mat-icon>
+            <mat-form-field>
+                <mat-label>Birthday</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="data.dateOfBirth">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="section">
+        <!-- Addresses -->
+        <h2>Addresses</h2>
+        <div class="form-item" *ngFor="let address of data.addresses">
+            <mat-icon>location_on</mat-icon>
+            <div class="group">
+                <mat-form-field>
+                    <mat-label>Street Address 1</mat-label>
+                    <input matInput [value]="address.addressLine1" (input)="address.addressLine1=$event.target.value">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Street Address 2</mat-label>
+                    <input matInput [value]="address.addressLine2" (input)="address.addressLine2=$event.target.value">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <input matInput [value]="address.city" (input)="address.city=$event.target.value">
+                </mat-form-field>
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>State</mat-label>
+                        <input matInput [value]="address.state" (input)="address.state=$event.target.value">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Zip Code</mat-label>
+                        <input matInput [value]="address.zip" (input)="address.zip=$event.target.value">
+                    </mat-form-field>
+                </div>
+                <mat-form-field>
+                    <mat-label>Address Type</mat-label>
+                    <mat-select [(value)]="address.type">
+                        <mat-option value="Mailing Address">Mailing Address</mat-option>
+                        <mat-option value="Street Address">Street Address</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="button-column">
+                <button (click)="addAddress()"><mat-icon>add_circle_outline</mat-icon></button>
+                <button (click)="removeAddress(address)"><mat-icon>remove_circle_outline</mat-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <!-- Contact Info -->
+        <h2>Contact Info</h2>
+        <div class="form-item" *ngFor="let email of data.emails">
+            <mat-icon>email</mat-icon>
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Email Address</mat-label>
+                    <input matInput [value]="email.email" (input)="email.email=$event.target.value">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Type</mat-label>
+                    <mat-select [(value)]="email.type">
+                        <mat-option value="Personal">Personal</mat-option>
+                        <mat-option value="Work">Work</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="button-column short">
+                <button (click)="addEmail()"><mat-icon>add_circle_outline</mat-icon></button>
+                <button (click)="removeEmail(email)"><mat-icon>remove_circle_outline</mat-icon></button>
+            </div>
+        </div>
+        <div class="form-item" *ngFor="let phone of data.phones">
+            <mat-icon>phone</mat-icon>
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput [value]="phone.phone" (input)="phone.phone=$event.target.value">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Type</mat-label>
+                    <mat-select [(value)]="phone.type">
+                        <mat-option value="Mobile">Mobile</mat-option>
+                        <mat-option value="Work">Work</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="button-column short">
+                <button (click)="addPhone()"><mat-icon>add_circle_outline</mat-icon></button>
+                <button (click)="removePhone(phone)"><mat-icon>remove_circle_outline</mat-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <!-- Legal Info -->
+        <h2>Legal Info</h2>
+        <div class="form-item">
+            <mat-icon>wc</mat-icon>
+            <div class="radio">
+                <label id="gender-label">Legal Gender</label>
+                <mat-radio-group class="radio" aria-labelledby="gender-label" [(value)]="data.genderDescription">
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button class="dialog-button" (click)="onNoClick()" cdkFocusInitial>Cancel</button>
+    <button mat-button class="dialog-button" (click)="onSave()">Save</button>
+</mat-dialog-actions>

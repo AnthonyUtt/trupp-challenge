@@ -1,40 +1,49 @@
 // I added a type declaration because the red squiggly was bothering me...
+// Also, the data structure was not in line with the wireframes, so
+// I edited the data structure to provide the functionality suggested
+// by the mockups.
 
-type EmployeeDetails = {
-  contactName: string;
+export type Address = {
+  type: 'Mailing Address' | 'Street Address'
+  addressLine1: string;
+  addressLine2: string | null;
+  city: string;
+  state: string;
+  zip: string;
+};
+
+export type Email = {
+  type: 'Personal' | 'Work';
+  email: string | null;
+};
+
+export type Phone = {
+  type: 'Mobile' | 'Work';
+  phone: string | null;
+};
+
+export type EmployeeDetails = {
+  fullName: string;
+  preferredFirstName: string;
   dateOfBirth: Date;
   maskedSocialSecurity: string;
   employmentStatus: 'Part-Time' | 'Full-Time';
   hireDate: Date;
-  streetAddress: {
-    addressLine1: string;
-    addressLine2: string | null;
-    city: string;
-    state: string;
-    zip: string;
-  };
-  mailingAddress: {
-    addressLine1: string | null;
-    addressLine2: string | null;
-    city: string | null;
-    state: string | null;
-    zip: string | null;
-  };
-  personalEmail: string;
-  workEmail: string;
-  mobilePhone: string;
-  workPhone: string;
+  addresses: Array<Address>;
+  emails: Array<Email>;
+  phones: Array<Phone>;
   genderDescription: 'Male' | 'Female';
   medicareEligible: boolean | null;
   smoker: boolean | null;
   disabled: boolean | null;
   student: boolean | null;
-}
+};
 
 export const EMPLOYEEDETAILS_MOCK: EmployeeDetails = {
-  contactName: 'Carrie Conway',
+  fullName: 'Caroline Conway',
+  preferredFirstName: 'Carrie',
   dateOfBirth: new Date('February 7, 1990'),
-  maskedSocialSecurity: '*1234',
+  maskedSocialSecurity: '000-00-1234',
   employmentStatus: 'Part-Time',
   hireDate: new Date('January 15, 2019'),
   // streetAddress: {
@@ -51,28 +60,42 @@ export const EMPLOYEEDETAILS_MOCK: EmployeeDetails = {
   //   state: 'OR',
   //   zip: '97221'
   // },
-  streetAddress: {
+  addresses: [{
+    type: 'Mailing Address',
     addressLine1: '12345 Aldergrove Street',
     addressLine2: null,
     city: 'Portland',
     state: 'OR',
     zip: '97217',
   },
-  mailingAddress: {
+  {
+    type: 'Street Address',
     addressLine1: null,
     addressLine2: null,
     city: null,
     state: null,
     zip: null,
+  }],
+  emails: [{
+    type: 'Personal',
+    email: 'carrieconway@gmail.com',
+    //email: null,
   },
-  personalEmail: 'carrieconway@gmail.com',
-  // personalEmail: null,
-  workEmail: 'carrie.conway@work.com',
-  // workEmail: null,
-  mobilePhone: '555-555-5555',
-  // mobilePhone: null,
-  workPhone: '222-222-2222',
-  // workPhone: null,
+  {
+    type: 'Work',
+    email: 'carrie.conway@work.com',
+    //email: null,
+  }],
+  phones: [{
+    type: 'Mobile',
+    phone: '555-555-5555',
+    //phone: null,
+  },
+  {
+    type: 'Work',
+    phone: '222-222-2222',
+    //phone: null,
+  }],
   genderDescription: 'Female',
   medicareEligible: null,
   smoker: null,
